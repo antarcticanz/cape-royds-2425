@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Orthomosaic Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H"
+    crossorigin=""
+  />
+
+  <style>
+    html, body, #map {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"
+    crossorigin=""
+  ></script>
+
+  <script>
+    // Initialize map, centered roughly on Cape Royds
+    var map = L.map('map').setView([-77.5543, 166.163], 16);
+
+    // Add tile layer (relative path to ./tiles folder)
+    L.tileLayer('tiles/{z}/{x}/{y}.png', {
+      minZoom: 12,
+      maxZoom: 20,
+      attribution: 'Orthomosaic © Your Organisation | Tiles created with QGIS'
+    }).addTo(map);
+  </script>
+</body>
+</html>
